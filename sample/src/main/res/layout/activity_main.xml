@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.jmedeisis.bugstick.Joystick
+        android:id="@+id/joystick1"
+        android:layout_width="@dimen/cont_size"
+        android:layout_height="@dimen/cont_size"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/bg_base"
+        app:start_on_first_touch="true"
+        app:force_square="true"
+        app:motion_constraint="None">
+
+        <Button
+            android:layout_width="@dimen/stick_size"
+            android:layout_height="@dimen/stick_size"
+            android:background="@drawable/bg_stick" />
+
+    </com.jmedeisis.bugstick.Joystick>
+
+    <com.jmedeisis.bugstick.Joystick
+        android:id="@+id/joystick2"
+        android:layout_width="@dimen/cont_size"
+        android:layout_height="@dimen/cont_size"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_base"
+        app:start_on_first_touch="true"
+        app:force_square="true"
+        app:motion_constraint="None">
+
+        <Button
+            android:layout_width="@dimen/stick_size"
+            android:layout_height="@dimen/stick_size"
+            android:background="@drawable/bg_stick" />
+
+    </com.jmedeisis.bugstick.Joystick>
+
+    <com.example.bugstick.DroneView
+        android:id="@+id/droneview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/joystick1" />
+
+    <TextView style="@style/TextAppearance.AppCompat.Caption"
+        android:id="@+id/tv_angle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/angle_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/droneview" />
+
+    <TextView style="@style/TextAppearance.AppCompat.Caption"
+        android:id="@+id/tv_offset1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/offset_margin"
+        android:layout_below="@id/tv_angle1"
+        android:layout_centerHorizontal="true" />
+
+    <TextView style="@style/TextAppearance.AppCompat.Caption"
+        android:id="@+id/tv_angle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/angle_margin"
+        android:layout_below="@id/tv_offset1"
+        android:layout_centerHorizontal="true" />
+
+    <TextView style="@style/TextAppearance.AppCompat.Caption"
+        android:id="@+id/tv_offset2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/offset_margin"
+        android:layout_below="@id/tv_angle2"
+        android:layout_centerHorizontal="true" />
+
+    <ViewAnimator
+        android:id="@+id/sample_output"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+
+        <ScrollView
+            style="@style/Widget.SampleMessageTile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/Widget.SampleMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/intro_message" />
+        </ScrollView>
+
+        <fragment
+            android:name="com.example.bugstick.common.logger.LogFragment"
+            android:id="@+id/log_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </ViewAnimator>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <FrameLayout
+        android:id="@+id/sample_content_fragment"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0px" />
+
+</RelativeLayout>
