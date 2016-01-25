@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean mLogShown;
 
     public static final String TAG = "MainActivity";
+    public BluetoothChatFragment fragment = new BluetoothChatFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            BluetoothChatFragment fragment = new BluetoothChatFragment();
+            //BluetoothChatFragment fragment = new BluetoothChatFragment();
             transaction.replace(R.id.sample_content_fragment, fragment);
             transaction.commit();
         }
@@ -60,12 +61,16 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onDrag(float degrees, float offset) {
-                angleView1.setText(String.format(angleValueString, degrees));
-                offsetView1.setText(String.format(offsetValueString, offset));
+                String degrees_str = String.format(angleValueString, degrees);
+                String offset_str = String.format(angleValueString, offset);
+                angleView1.setText(degrees_str);
+                offsetView1.setText(offset_str);
 
                 droneView.setVelocity(
                         (float) Math.cos(degrees * Math.PI / 180f) * offset * MAX_DRONE_SPEED_DP_PER_S,
                         -(float) Math.sin(degrees * Math.PI / 180f) * offset * MAX_DRONE_SPEED_DP_PER_S);
+
+                fragment.sendMessage("L - " + degrees_str + ", " + offset_str);
             }
 
             @Override
@@ -90,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
                 droneView.setRotation(
                         (float) Math.cos(degrees * Math.PI / 180f) * offset * MAX_DRONE_SPEED_DP_PER_S,
                         -(float) Math.sin(degrees * Math.PI / 180f) * offset * MAX_DRONE_SPEED_DP_PER_S);
+
+                //fragment.sendMessage("R - Angle: " + String.format(angleValueString, degrees) + ", Offset: " + String.format(offsetValueString, offset));
             }
 
             @Override

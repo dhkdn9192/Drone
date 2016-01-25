@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Bugstick-master.iml" filepath="$PROJECT_DIR$/Bugstick-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Drone.iml" filepath="$PROJECT_DIR$/Drone.iml" />
       <module fileurl="file://$PROJECT_DIR$/bugstick/bugstick.iml" filepath="$PROJECT_DIR$/bugstick/bugstick.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
