@@ -89,14 +89,16 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onDrag(float degrees, float offset) {
-                angleView2.setText(String.format(angleValueString, degrees));
-                offsetView2.setText(String.format(offsetValueString, offset));
+                String degrees_str = String.format(angleValueString, degrees);
+                String offset_str = String.format(angleValueString, offset);
+                angleView2.setText(degrees_str);
+                offsetView2.setText(offset_str);
 
                 droneView.setRotation(
                         (float) Math.cos(degrees * Math.PI / 180f) * offset * MAX_DRONE_SPEED_DP_PER_S,
                         -(float) Math.sin(degrees * Math.PI / 180f) * offset * MAX_DRONE_SPEED_DP_PER_S);
 
-                //fragment.sendMessage("R - Angle: " + String.format(angleValueString, degrees) + ", Offset: " + String.format(offsetValueString, offset));
+                fragment.sendMessage("R - " + degrees_str + ", " + offset_str);
             }
 
             @Override
